@@ -1,0 +1,63 @@
+/* Site-wide styles for Siphilisiwe Foundation */
+:root{
+	--accent:#0077cc;
+	--muted:#666;
+	--bg:#fff7ea; /* warm cream page background (updated) */
+}
+*{box-sizing:border-box}
+body{font-family:Segoe UI, Roboto, Arial, sans-serif;margin:0;color:#222;background:linear-gradient(180deg,var(--bg),#ffffff);line-height:1.5}
+/* page-load subtle fade (hidden until JS adds page-ready) */
+body{opacity:0;transform:translateY(6px);transition:opacity 420ms ease,transform 420ms ease}
+body.page-ready{opacity:1;transform:none}
+
+/* enable smooth scrolling for anchor links */
+html{scroll-behavior:smooth}
+header{display:flex;align-items:center;gap:18px;padding:18px 24px;border-bottom:1px solid #eee;background:#ffffff;position:sticky;top:0;z-index:1000;transition:transform 220ms ease, box-shadow 200ms ease}
+/* subtle shadow so content below shows separation when header overlays */
+header{box-shadow:0 1px 0 rgba(0,0,0,0.03)}
+/* when hidden, move header out of view */
+header.hidden{transform:translateY(-120%);box-shadow:none}
+/* stronger shadow when page is scrolled */
+body.scrolled header{box-shadow:0 6px 20px rgba(6,24,38,0.08)}
+header img{height:68px;width:auto;object-fit:contain}
+header h1{margin:0;font-size:1.1rem}
+header p{margin:0;color:var(--muted);font-size:0.95rem}
+nav{margin-left:auto}
+nav ul{list-style:none;margin:0;padding:0;display:flex;gap:8px;align-items:center}
+nav li{padding:8px 10px;border-radius:6px}
+nav a{color:#222;text-decoration:none;display:inline-block;padding:6px 10px;border-radius:6px}
+nav a:hover,nav a:focus{background:var(--accent);color:#fff}
+nav a.active{background:var(--accent);color:#fff}
+/* subtle link and button transitions */
+a{transition:color 180ms ease,background-color 180ms ease,transform 160ms ease}
+a:active{transform:translateY(1px)}
+form input[type="submit"], button{transition:background-color 180ms ease,transform 120ms ease}
+form input[type="submit"]:active, button:active{transform:translateY(1px)}
+main{max-width:1000px;margin:26px auto;padding:0 18px}
+section{margin-bottom:20px}
+section h1, section h2, section h3, section h4{color:#0a3247}
+img{max-width:100%;height:auto;display:block}
+.details{font-size:1.05rem}
+footer{background:#f6f7f8;padding:18px 24px;text-align:center;color:var(--muted);border-top:1px solid #eee}
+form input[type="text"], form input[type="email"], form textarea{width:100%;padding:8px;margin:6px 0 12px;border:1px solid #ddd;border-radius:6px}
+form input[type="submit"]{background:var(--accent);color:#fff;border:0;padding:10px 14px;border-radius:6px;cursor:pointer}
+@media (max-width:700px){
+	header{flex-direction:column;align-items:flex-start}
+	nav{width:100%}
+	nav ul{flex-wrap:wrap}
+	header img{height:56px}
+}
+
+/* small adjustments for list content that has nested <p> inside <ul> in these pages */
+ul p{margin:0}
+
+/* Reveal animation for elements on scroll */
+.reveal{opacity:0;transform:translateY(18px);transition:opacity 600ms cubic-bezier(.2,.9,.2,1),transform 600ms cubic-bezier(.2,.9,.2,1);will-change:opacity,transform}
+.reveal.in-view{opacity:1;transform:none}
+
+/* Form status styling */
+.form-status{font-size:0.95rem;margin-top:8px}
+.form-status[aria-live]{outline:0}
+.form-status[style*="color: red"]{color:#b00020}
+.form-status[style*="color: green"]{color:#0b8a3e}
+.form-status[style*="color: orange"]{color:#b36b00}
